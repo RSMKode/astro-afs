@@ -1,0 +1,68 @@
+---
+import { string } from "astro/zod";
+
+interface Props {
+  genreName: string;
+  animeList: Array<{
+    title: string;
+    genre: string;
+    order: number;
+    synopsis: string;
+    posterImage: string;
+    wallpaper: string;
+  }>;
+}
+
+const { genreName, animeList } = Astro.props;
+---
+
+<div class="dropdown">
+  <a href={`../index.html#${genreName}`}>{genreName}</a>
+  <div class="dropdown-element">
+    {
+      animeList.map((anime) => (
+        <a href={`../index.html#${anime.title}`}>{anime.title}</a>
+      ))
+    }
+  </div>
+</div>
+<style>
+  .dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown a:is(:hover, :focus) {
+    transition: 0.3s ease;
+    color: white;
+    text-shadow: 0 0 20px var(--accent);
+  }
+
+  .dropdown:is(:hover, :focus) .dropdown-element {
+    visibility: visible;
+  }
+
+  .dropdown-element {
+    position: absolute;
+    top: 1.5rem;
+    left: -0.5rem;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 8rem;
+    background-color: #27275d75;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding-top: 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.748);
+  }
+
+  .dropdown-element a {
+    font-size: 0.7rem;
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+import AnimeGenre from "@/components/AnimeGenre.astro";
+import Layout from "../layouts/Layout.astro";
+
+import animeData from "@/data/animes.json";
+// import { getAnimes } from "@/services/api";
+---
+
+<Layout title="ASTRO Anime First Steps" animeData={animeData}>
+  <main>
+    {
+      animeData.map((anime) => (
+        <AnimeGenre genre={anime.genre} animes={anime.animeList} />
+      ))
+    }
+  </main>
+</Layout>
+<style></style>
