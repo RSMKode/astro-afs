@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^7.3.2",
-    "astro": "^4.4.2",
+    "astro": "^4.4.3",
     "swiper": "^11.0.6"
   }
 }
